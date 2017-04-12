@@ -7,8 +7,7 @@ jobs:
       - image: ruby:2.4.1
     steps:
       - checkout
-      - >
-        HUGO_VERSION=0.18.1 &&
+      - HUGO_VERSION=0.18.1 &&
         set -x &&
         set -e &&
         if [ ! -e $CIRCLE_BUILD_DIR/bin/hugo ] || ![[ `hugo version` =~ v${HUGO_VERSION} ]]; then
