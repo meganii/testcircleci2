@@ -7,6 +7,16 @@ jobs:
       - image: ruby:2.4.1
     steps:
       - checkout
+      - >
+        HUGO_VERSION=0.18.1 &&
+        set -x &&
+        set -e &&
+        if [ ! -e $CIRCLE_BUILD_DIR/bin/hugo ] || ![[ `hugo version` =~ v${HUGO_VERSION} ]]; then
+          wget https://github.com/spf13/hugo/releases/download/v${HUGO_VERSION}/hugo_${HUGO_VERSION}_Linux-64bit.tar.gz &&
+          tar xvzf hugo_${HUGO_VERSION}_Linux-64bit.tar.gz &&
+          sudo cp hugo_${HUGO_VERSION}_linux_amd64/hugo_${HUGO_VERSION}_linux_amd64 $CIRCLE_BUILD_DIR/bin/hugo;
+        fi
+      - run: hugo version
       - run: echo "hello world"
-      - run: echo `ruby --version`
+      - run: ruby --version
       - run: python --version
