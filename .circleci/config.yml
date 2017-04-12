@@ -9,3 +9,4 @@ jobs:
       - checkout
       - run: echo "hello world"
       - run: echo `ruby --version`
+      - run: python --version
