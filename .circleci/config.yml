@@ -4,6 +4,7 @@ jobs:
     working_directory: ~/circulate
     docker:
       - image: python:3.6.0
+      - image: ruby:2.4.1
     steps:
       - checkout
       - run: echo "hello world"
